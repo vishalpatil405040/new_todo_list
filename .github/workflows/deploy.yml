@@ -38,7 +38,7 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           echo "Pushing Docker image to ECR..."
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          echo "Image pushed successfully!"
+          echo "Image pushed successfully!" 
 
       # 5️⃣ Deploy on EC2 (SSH)
       - name: Deploy on EC2 instance 
