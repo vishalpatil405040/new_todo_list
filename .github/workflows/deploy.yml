@@ -20,7 +20,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-south-1   # change to your region
+          aws-region: us-east-1   # change to your region
 
       # 3️⃣ Login to ECR
       - name: Login to Amazon ECR
@@ -49,16 +49,16 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}              # private SSH key (PEM content)
           script: |
             echo "Logging into ECR on EC2..."
-            aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin ${{ steps.login-ecr.outputs.registry }}
-
+            aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 983915441388.dkr.ecr.ap-south-1.amazonaws.com
             echo "Pulling latest Docker image..."
-            docker pull ${{ steps.login-ecr.outputs.registry }}/myapp:latest
+             docker pull 983915441388.dkr.ecr.ap-south-1.amazonaws.com/my-flask-app:latest
+
 
             echo "Stopping old container..."
             docker stop myapp || true
             docker rm myapp || true
 
             echo "Running new container..."
-            docker run -d -p 8000:8000 --name myapp ${{ steps.login-ecr.outputs.registry }}/myapp:latest
+            docker run -d -p 8000:8000 --name myapp 983915441388.dkr.ecr.ap-south-1.amazonaws.com/my-flask-app:latest
 
             echo "Deployment successful!"
