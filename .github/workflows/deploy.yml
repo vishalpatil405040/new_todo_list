@@ -30,14 +30,14 @@ jobs:
       # 4️⃣ Build, tag, and push the Docker image
       - name: Build, tag, and push Docker image to ECR
         env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REGISTRY: 983915441388.dkr.ecr.ap-south-1.amazonaws.com
           ECR_REPOSITORY: todo_list     # <-- change this to your ECR repo name
           IMAGE_TAG: latest
         run: |
           echo "Building Docker image..."
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker build -t 983915441388.dkr.ecr.ap-south-1.amazonaws.com/my-flask-app:latest .
           echo "Pushing Docker image to ECR..."
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push 983915441388.dkr.ecr.ap-south-1.amazonaws.com/my-flask-app:latest
           echo "Image pushed successfully!" 
 
       # 5️⃣ Deploy on EC2 (SSH)
