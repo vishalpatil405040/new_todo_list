@@ -35,9 +35,9 @@ jobs:
           IMAGE_TAG: latest
         run: |
           echo "Building Docker image..."
-          docker build -t 983915441388.dkr.ecr.ap-south-1.amazonaws.com/my-flask-app:latest .
+          docker build -t 983915441388.dkr.ecr.us-east-1.amazonaws.com/my-flask-app:latest .
           echo "Pushing Docker image to ECR..."
-          docker push 983915441388.dkr.ecr.ap-south-1.amazonaws.com/my-flask-app:latest
+          docker push 983915441388.dkr.ecr.us-east-1.amazonaws.com/my-flask-app:latest
           echo "Image pushed successfully!" 
 
       # 5️⃣ Deploy on EC2 (SSH)
